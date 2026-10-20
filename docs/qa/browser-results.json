@@ -1,0 +1,79 @@
+[
+  {
+    "name": "offline font loads",
+    "status": "PASS"
+  },
+  {
+    "name": "23 activity stories focus on purpose, practice and reflection",
+    "status": "PASS"
+  },
+  {
+    "name": "one expanded activity per chapter",
+    "status": "PASS"
+  },
+  {
+    "name": "lightbox buttons, keys, wraparound, swipe, close focus",
+    "status": "PASS"
+  },
+  {
+    "name": "home/guide navigation clears open chapter on browser back",
+    "status": "PASS"
+  },
+  {
+    "name": "malformed URL fragment is harmless",
+    "status": "PASS"
+  },
+  {
+    "name": "layout 375px",
+    "status": "PASS"
+  },
+  {
+    "name": "layout 390px",
+    "status": "PASS"
+  },
+  {
+    "name": "layout 430px",
+    "status": "PASS"
+  },
+  {
+    "name": "layout 768px",
+    "status": "PASS"
+  },
+  {
+    "name": "layout 1440px",
+    "status": "PASS"
+  },
+  {
+    "name": "all 59 images decode offline",
+    "status": "PASS"
+  },
+  {
+    "name": "photos have no visible annotations and tall images remain complete",
+    "status": "PASS"
+  },
+  {
+    "name": "homepage and chapter directory layouts",
+    "status": "PASS"
+  },
+  {
+    "name": "deep link and replay preserve working navigation",
+    "status": "PASS"
+  },
+  {
+    "name": "normal opening and chapter animations finish",
+    "status": "PASS"
+  },
+  {
+    "name": "Back during a chapter transition respects the latest URL",
+    "status": "PASS"
+  },
+  {
+    "name": "navigation works without Web Animations",
+    "status": "PASS"
+  },
+  {
+    "name": "page errors",
+    "status": "PASS",
+    "errors": []
+  }
+]

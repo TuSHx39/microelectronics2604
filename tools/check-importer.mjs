@@ -1,0 +1,23 @@
+// An accidental rerun must stop before overwriting either content or photographs.
+import assert from 'node:assert/strict';
+import { mkdtempSync, mkdirSync, writeFileSync, copyFileSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
+const root = mkdtempSync(resolve(tmpdir(), '2604-import-check-'));
+const site = resolve(root, 'site');
+for(const path of ['site/tools','site/js','site/assets/logos','活动图片']) mkdirSync(resolve(root,path),{recursive:true});
+for(const logo of ['校徽.png','院徽.png','班徽.png']) writeFileSync(resolve(root,logo),'replacement');
+writeFileSync(resolve(site,'js/activities.js'),'// edited phase-two content');
+writeFileSync(resolve(site,'assets/logos/university.png'),'preserved logo');
+const script = resolve(site,'tools/import-resources.ps1');
+copyFileSync(resolve(dirname(fileURLToPath(import.meta.url)),'import-resources.ps1'),script);
+const run = spawnSync('pwsh.exe',['-NoProfile','-File',script],{encoding:'utf8'});
+assert.ifError(run.error);
+assert.ok(Number.isInteger(run.status), 'Importer must actually finish');
+assert.notEqual(run.status,0,'Existing content must refuse an unqualified import');
+assert.match(run.stderr, /已有编辑后的活动数据/, 'Failure must come from the intended protection');
+assert.equal(readFileSync(resolve(site,'js/activities.js'),'utf8'),'// edited phase-two content');
+assert.equal(readFileSync(resolve(site,'assets/logos/university.png'),'utf8'),'preserved logo','Guard must run before any asset writes');
+console.log('PASS: importer stops before changing edited data or assets.');
