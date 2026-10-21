@@ -12,6 +12,7 @@
   <script src="js/activities.js" defer></script>
   <script src="js/photo-editorial.js" defer></script>
   <script src="js/opening.js" defer></script>
+  <script src="js/photo-cache.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body id="top">
@@ -158,7 +159,7 @@
   <dialog class="activity-index" aria-labelledby="index-title"><header class="dialog-heading"><div><p class="section-label">寻根 · 共鸣 · 强芯 · 躬行</p><h2 id="index-title" class="calligraphy">活动索引</h2></div><button type="button" class="icon-button index-close" aria-label="关闭活动索引">×</button></header><div class="index-list"></div></dialog>
   <dialog class="lightbox" aria-labelledby="lightbox-title">
     <div class="lightbox-top"><h2 id="lightbox-title"></h2><button type="button" class="lightbox-close icon-button" aria-label="关闭照片">×</button></div>
-    <div class="lightbox-stage"><button type="button" class="lightbox-prev icon-button" aria-label="上一张照片">‹</button><figure><img class="lightbox-image" alt=""><figcaption class="lightbox-caption"></figcaption><p class="lightbox-message" role="status"></p></figure><button type="button" class="lightbox-next icon-button" aria-label="下一张照片">›</button></div>
+    <div class="lightbox-stage"><button type="button" class="lightbox-prev icon-button" aria-label="上一张照片">‹</button><figure><img class="lightbox-image" alt="" decoding="async" fetchpriority="high"><figcaption class="lightbox-caption"></figcaption><p class="lightbox-message" role="status"></p></figure><button type="button" class="lightbox-next icon-button" aria-label="下一张照片">›</button></div>
     <div class="lightbox-bottom"><span class="lightbox-counter" aria-live="polite"></span><span class="lightbox-hint">左右滑动切换</span><a class="lightbox-activity-link" href="#guide" data-photo-activity hidden>查看对应活动 <span aria-hidden="true">↗</span></a></div>
   </dialog>
 </body>

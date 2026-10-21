@@ -238,6 +238,7 @@
   function showPhoto(index) {
     photoIndex = (index + galleryEntries.length) % galleryEntries.length;
     const { activity, photo } = galleryEntries[photoIndex];
+    window.PhotoCache.warm([photo.src, galleryEntries[(photoIndex + 1) % galleryEntries.length].photo.src, galleryEntries[(photoIndex - 1 + galleryEntries.length) % galleryEntries.length].photo.src]);
     image.hidden = false;
     image.src = photo.src;
     image.alt = approvedPhoto(photo)?.caption || photo.alt;
@@ -376,4 +377,8 @@
     requestAnimationFrame(() => { backTop.hidden = window.scrollY < 600; scrollScheduled = false; });
   }, { passive: true });
   replayIntro();
+  window.PhotoCache.start([
+    ...allPhotoEntries.map(entry => previewSource(entry.photo.src)),
+    ...allPhotoEntries.map(entry => entry.photo.src)
+  ]);
 })();
