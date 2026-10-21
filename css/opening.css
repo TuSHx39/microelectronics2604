@@ -1,4 +1,5 @@
 /* Opening-only choreography. The second-stage exhibition styles stay in style.css. */
+html { scrollbar-gutter: stable; }
 .intro {
   --opening-gold: #b99a6b;
   background: transparent;
@@ -6,10 +7,12 @@
   min-height: 100svh;
 }
 .intro[open] { display: grid; place-items: center; }
+.intro:not(.opening-run) :is(.intro-content, .opening-memories, .intro-bottom) { opacity: 0; }
+.intro.opening-suspended *, .intro.opening-suspended *::after { animation-play-state: paused !important; }
 .opening-leaf { position: absolute; inset-block: 0; width: 50%; z-index: -2; background-image: linear-gradient(115deg, #eee0d9, #faf7f0 48%, #dce7ed); background-size: 200% 100%; }
 .opening-leaf-left { left: 0; background-position: left center; }
 .opening-leaf-right { right: 0; background-position: right center; }
-.opening-scenery { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+.opening-scenery { position: absolute; inset: 0; overflow: hidden; contain: layout paint style; pointer-events: none; z-index: -1; }
 .opening-aura { position: absolute; width: 75vmax; height: 75vmax; border-radius: 50%; opacity: .7; }
 .opening-aura-red { left: -45vmax; top: -30vmax; background: radial-gradient(circle, #9d33422e, #9d334200 68%); }
 .opening-aura-blue { right: -40vmax; bottom: -35vmax; background: radial-gradient(circle, #397ead35, #397ead00 68%); }
@@ -79,6 +82,7 @@
 .intro[open].opening-run .intro-bottom { animation: opening-rise 1s 2.5s var(--ease) both; }
 .intro[open].opening-run .opening-mote { animation: opening-mote-drift var(--duration) var(--delay) linear infinite; }
 .intro.opening-leaving { pointer-events: none; }
+.intro.opening-leaving :is(.opening-leaf, .opening-scenery, .intro-content, .opening-memory) { will-change: transform, opacity; }
 .intro.opening-leaving :is(.opening-mote, .circuit-rings, .seal-ring) { animation-play-state: paused; }
 .entered.opening-transition .hero-copy > :not(.hero-badge),
 .entered.opening-transition .hero-visual { animation: none; }

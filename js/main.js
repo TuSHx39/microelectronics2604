@@ -180,6 +180,10 @@
     document.body.classList.add("entered", "opening-transition");
     window.scrollTo({ top: 0, behavior: "instant" });
     try {
+      await window.IntroExperience.prepareHome();
+      // Start the homepage once, underneath the opening curtains. Removing this
+      // class only after close would restart its opacity animation and flash.
+      document.body.classList.remove("opening-transition");
       await window.IntroExperience.leave({ quick });
     } finally {
       intro.close();

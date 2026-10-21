@@ -1,0 +1,54 @@
+{
+  "resources": [
+    {
+      "source": "assets\\photos\\1-1.jpg",
+      "output": "assets\\opening\\1-1.webp",
+      "before": 222945,
+      "after": 23322
+    },
+    {
+      "source": "assets\\photos\\2-1.jpg",
+      "output": "assets\\opening\\2-1.webp",
+      "before": 445743,
+      "after": 21810
+    },
+    {
+      "source": "assets\\photos\\4-1.jpg",
+      "output": "assets\\opening\\4-1.webp",
+      "before": 388838,
+      "after": 37384
+    },
+    {
+      "source": "assets\\photos\\19-1.jpg",
+      "output": "assets\\opening\\19-1.webp",
+      "before": 328269,
+      "after": 39842
+    },
+    {
+      "source": "assets\\logos\\class.png",
+      "output": "assets\\logos\\class-display.webp",
+      "before": 1256239,
+      "after": 28104
+    },
+    {
+      "source": "assets\\logos\\university.png",
+      "output": "assets\\logos\\university-display.webp",
+      "before": 316965,
+      "after": 65476
+    },
+    {
+      "source": "assets\\logos\\college.png",
+      "output": "assets\\logos\\college-display.webp",
+      "before": 594862,
+      "after": 27158
+    },
+    {
+      "source": "assets\\fonts\\MaShanZheng-Regular.ttf",
+      "output": "assets\\fonts\\MaShanZheng-display.woff2",
+      "before": 5857936,
+      "after": 545224
+    }
+  ],
+  "before": 9411797,
+  "after": 788320
+}
