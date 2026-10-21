@@ -159,10 +159,15 @@ button:disabled { cursor: wait; }
 .closing-actions strong { display: block; font-size: 13px; font-weight: 500; }
 .closing-actions small { font-size: 10px; color: var(--muted); }
 .closing-actions button > span:last-child { color: var(--red); }
-.site-footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; border-top: 1px solid var(--line); padding-block: 24px 35px; font-size: 10px; color: var(--muted); }
-.site-footer strong { font-weight: 500; color: var(--blue); }
-.site-footer a { white-space: nowrap; padding: 10px; border-radius: 30px; }
-.site-footer a span { margin-left: 12px; }
+.site-footer { display: grid; grid-template-columns: 80px minmax(0, 1fr) 80px; align-items: center; gap: 12px; border-top: 1px solid var(--line); padding-block: 24px 35px; font-size: 12px; color: #34465c; }
+.footer-badge { width: 80px; height: 80px; object-fit: contain; }
+.footer-organization { text-align: center; font-size: inherit; }
+.footer-credit { grid-column: 1 / -1; justify-self: center; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .35em; font-size: inherit; line-height: 1.8; }
+.footer-author { font-weight: 500; color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.footer-author:hover { color: var(--red); }
+.footer-credit img { width: 18px; height: 18px; object-fit: contain; flex-shrink: 0; }
+.footer-home { justify-self: end; white-space: nowrap; padding-block: 10px; border-radius: 30px; font-size: 10px; }
+.footer-home span { margin-left: 6px; }
 .back-top { position: fixed; right: 18px; bottom: max(20px, env(safe-area-inset-bottom)); z-index: 12; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #fff; border-radius: 50%; background: #ffffffeb; color: var(--blue); box-shadow: 0 5px 22px #163a611a; font-size: 21px; }
 dialog { color: inherit; }
 .intro { border: 0; padding: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; overflow: hidden; background: #f8f4ef; }
@@ -309,9 +314,10 @@ dialog { color: inherit; }
   .anniversaries strong { font-size: 16px; }
   .closing-actions { margin-top: 25px; gap: 9px; }
   .closing-actions button { border-radius: 22px; padding: 16px 18px; }
-  .site-footer { align-items: start; font-size: 8px; padding-bottom: 75px; }
-  .site-footer a { padding: 0; }
-  .site-footer a span { margin-left: 3px; }
+  .site-footer { grid-template-columns: 64px minmax(0, 1fr) 64px; gap: 12px 8px; padding-bottom: 75px; }
+  .footer-badge { width: 64px; height: 64px; }
+  .footer-home { font-size: 9px; padding-block: 8px; }
+  .footer-home span { margin-left: 3px; }
   .intro h2 { font-size: clamp(48px, 13.5vw, 74px); margin: 29px 0; }
   .intro-meta { font-size: 10px; }
   .intro-event { font-size: 11px; }
