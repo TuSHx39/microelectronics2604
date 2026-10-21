@@ -368,15 +368,18 @@ dialog { color: inherit; }
   .lightbox-stage figure { padding-bottom: 56px; }
   .lightbox-bottom { font-size: 9px; padding: 16px 18px max(18px, env(safe-area-inset-bottom)); }
 }
-/* Touch layouts use short, finite fades and opaque surfaces while scrolling. */
+/* Keep touch interactions animated; reduce blur and persistent background work. */
 @media (max-width: 900px), (pointer: coarse) {
   .chapter-nav { backdrop-filter: none; background: #fff; }
   .activity-index::backdrop, .lightbox::backdrop { backdrop-filter: none; }
-  .entered .hero-copy > :not(.hero-badge), .entered .hero-visual { animation: none; }
-  .activity[open] .activity-body { animation: mobile-fade .16s ease-out; }
+  .entered .hero-copy > :not(.hero-badge) { animation: arrive .42s var(--ease) both; }
+  .entered .hero-visual { animation: photo-arrive .48s .1s var(--ease) both; }
+  .activity[open] .activity-body { animation: card-unfold .3s var(--ease) both; }
+  .chapter-curtain[open] h2 { animation: arrive .36s var(--ease) both; }
   .photo-trigger img, .activity-cover > img { transition: none; }
   .photo-trigger:hover img, .activity > summary:hover .activity-cover > img { transform: none; }
-  .directory-card, .closing-actions button, .pill-button { transition: background-color .15s, border-color .15s; }
+  .directory-card, .closing-actions button, .pill-button { transition: transform .18s var(--ease), background-color .15s, border-color .15s; }
+  .chapter-directory .directory-card:active { transform: scale(.98); }
   .closing-actions button:hover, .pill-button:hover { transform: none; }
 }
 @keyframes mobile-fade { from { opacity: 0; } to { opacity: 1; } }

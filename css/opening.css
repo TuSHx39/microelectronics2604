@@ -155,7 +155,7 @@ html { scrollbar-gutter: stable; }
 /* Keep all four memories in normal flow on phones, including short landscape
    screens. Overflow scrolls vertically instead of cropping cards or the CTA. */
 @media (max-width: 900px) {
-  .intro { min-height: 0; overflow-y: auto; padding: max(76px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom)); gap: 16px; }
+  .intro { min-height: 0; overflow-x: hidden; overflow-y: auto; padding: max(76px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom)); gap: 16px; }
   .intro[open] { display: flex; flex-direction: column; align-items: center; }
   .intro .intro-content { order: 1; flex: 0 0 auto; position: relative; width: 100%; max-width: 520px; min-width: 0; margin-top: auto; padding: 0; }
   .opening-seal { display: block; width: 56px; height: 56px; margin-bottom: 10px; }
@@ -177,16 +177,24 @@ html { scrollbar-gutter: stable; }
   .opening-ribbons { opacity: .18; }
 }
 @media (max-width: 900px), (pointer: coarse) {
-  /* Avoid per-glyph clipping, animated SVG strokes, perpetual rotation and
-     multiple full-screen compositor layers. Only two finite entrances remain. */
-  .intro[open].opening-run :is(.opening-scenery, .intro-content, .opening-memories) *,
-  .intro[open].opening-run *::after, .intro[open].opening-run .intro-bottom { animation: none !important; }
-  .intro[open].opening-run .intro-content { animation: mobile-fade .36s ease-out; }
-  .intro[open].opening-run .opening-memories { animation: mobile-fade .3s .1s ease-out both; }
+  /* Preserve finite entrances; omit continuous decoration and clipping on touch. */
+  .intro[open].opening-run :is(.opening-aura, .ribbon-flow, .circuit-rings, .circuit-traces path, .circuit-nodes, .seal-ring, .opening-mote) { animation: none; }
+  .intro[open].opening-run .opening-seal { animation: opening-seal-in .55s .05s var(--ease) both; }
+  .intro[open].opening-run :is(.intro-meta, .intro-event) { animation: opening-rise .4s .12s var(--ease) both; }
+  .intro[open].opening-run .opening-letter { clip-path: none; animation: mobile-letter-in .45s calc(var(--letter-delay) - .45s) var(--ease) both; }
+  .intro[open].opening-run .opening-theme { animation: opening-rise .4s .4s var(--ease) both; }
+  .intro[open].opening-run .opening-memory { animation: mobile-card-in .48s var(--mobile-delay, .35s) var(--ease) both; }
+  .opening-memory:nth-child(2) { --mobile-delay: .43s; }
+  .opening-memory:nth-child(3) { --mobile-delay: .51s; }
+  .opening-memory:nth-child(4) { --mobile-delay: .59s; }
+  .intro[open].opening-run .intro-enter { animation: opening-rise .4s .55s var(--ease) both; }
+  .intro[open].opening-run .intro-bottom { animation: opening-rise .4s .65s var(--ease) both; }
   .intro[open].opening-run .circuit-traces path { stroke-dashoffset: 0; }
   .intro.opening-leaving :is(.opening-leaf, .opening-scenery, .intro-content, .opening-memory) { will-change: auto; }
-  .intro-enter::after { display: none; }
+  .intro-enter::after { display: none; animation: none !important; }
 }
+@keyframes mobile-letter-in { from { opacity: 0; transform: translate(-7px, 8px) rotate(-4deg); } to { opacity: 1; transform: translate(0, 0) rotate(0); } }
+@keyframes mobile-card-in { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) {
   .intro[open].opening-run *, .intro[open].opening-run *::after { animation: none !important; }
   .opening-mote { display: none; }

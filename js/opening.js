@@ -80,8 +80,19 @@
     intro.classList.add("opening-leaving");
     intro.querySelector(".opening-skip").disabled = true;
     if (motion.matches) return;
-    if (quick || lightweight.matches) {
-      await move(intro, [{ opacity: 1 }, { opacity: 0 }], quick ? 150 : 220);
+    if (quick) {
+      await move(intro, [{ opacity: 1 }, { opacity: 0 }], 150);
+      return;
+    }
+    if (lightweight.matches) {
+      await Promise.all([
+        move(intro.querySelector(".intro-content"), [{ opacity: 1, transform: "translateY(0)" }, { opacity: 0, transform: "translateY(-12px)" }], 300),
+        move(intro.querySelector(".opening-memories"), [{ opacity: 1, transform: "translateY(0)" }, { opacity: 0, transform: "translateY(10px)" }], 280),
+        move(intro.querySelector(".opening-leaf-left"), [{ transform: "translateX(0)" }, { transform: "translateX(-101%)" }], 440, 40),
+        move(intro.querySelector(".opening-leaf-right"), [{ transform: "translateX(0)" }, { transform: "translateX(101%)" }], 440, 40),
+        ...[".opening-institutions", ".opening-skip", ".intro-bottom"].map(selector =>
+          move(intro.querySelector(selector), [{ opacity: 1 }, { opacity: 0 }], 180))
+      ]);
       return;
     }
     const photos = intro.querySelectorAll(".opening-memory");

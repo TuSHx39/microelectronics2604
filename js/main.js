@@ -144,14 +144,8 @@
     if (!chapter) return;
     changingChapter = true;
     try {
-      if (activeChapter !== id && lightweight.matches) {
-        setChapter(id);
-        if (boardId) document.getElementById(`activity-${boardId}`).open = true;
-        const destination = boardId ? document.getElementById(`activity-${boardId}`) : document.getElementById(id);
-        destination.scrollIntoView({ behavior: "instant", block: "start" });
-        // Fade the small heading, not the entire long chapter surface.
-        await animate(document.querySelector(`#${id} .chapter-heading`), [{ opacity: 0 }, { opacity: 1 }], 160);
-      } else if (activeChapter !== id) {
+      if (activeChapter !== id) {
+        const compact = lightweight.matches;
         clearAnimations(curtain);
         clearAnimations(curtain.querySelector(".curtain-line"));
         curtain.dataset.tone = id;
@@ -159,13 +153,13 @@
         curtain.querySelector("h2").textContent = chapter.name;
         curtain.querySelector(".curtain-intro").textContent = chapter.intro;
         openDialog(curtain);
-        await animate(curtain, [{ opacity: 0, transform: "translateY(25px)" }, { opacity: 1, transform: "translateY(0)" }], 240);
-        await animate(curtain.querySelector(".curtain-line"), [{ transform: "scaleX(.2)" }, { transform: "scaleX(1)" }], 520);
+        await animate(curtain, [{ opacity: 0, transform: `translateY(${compact ? 12 : 25}px)` }, { opacity: 1, transform: "translateY(0)" }], compact ? 180 : 240);
+        await animate(curtain.querySelector(".curtain-line"), [{ transform: "scaleX(.2)" }, { transform: "scaleX(1)" }], compact ? 300 : 520);
         setChapter(id);
         if (boardId) document.getElementById(`activity-${boardId}`).open = true;
         const destination = boardId ? document.getElementById(`activity-${boardId}`) : document.getElementById(id);
         destination.scrollIntoView({ behavior: "instant", block: "start" });
-        await animate(curtain, [{ opacity: 1 }, { opacity: 0, transform: "translateY(-20px)" }], 330);
+        await animate(curtain, [{ opacity: 1 }, { opacity: 0, transform: `translateY(${compact ? -10 : -20}px)` }], compact ? 220 : 330);
         curtain.close();
       } else if (boardId) {
         document.getElementById(`activity-${boardId}`).open = true;
