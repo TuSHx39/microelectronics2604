@@ -12,7 +12,10 @@
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   })[char]);
   const displayText = value => String(value ?? "").replace(/“最佳团日”/g, "最佳团日");
+  // Browsing uses 800px previews; the lightbox keeps activity.photos originals.
+  const previewSource = src => src.replace(/^assets\/photos\/(.+)\.[^.]+$/, "assets/previews/$1.webp");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const lightweight = window.matchMedia("(max-width: 900px), (pointer: coarse)");
   const page = document.querySelector(".page-shell");
   const reader = document.querySelector(".chapter-reader");
   const intro = document.querySelector(".intro");
@@ -29,7 +32,9 @@
   async function animate(element, frames, duration) {
     if (reducedMotion.matches || typeof element.animate !== "function") return;
     try {
-      await element.animate(frames, { duration, easing: "cubic-bezier(.22,1,.36,1)", fill: "forwards" }).finished;
+      const animation = element.animate(frames, { duration, easing: "cubic-bezier(.22,1,.36,1)", fill: "forwards" });
+      try { await animation.finished; }
+      finally { animation.cancel(); }
     } catch (error) {
       if (error.name !== "AbortError") throw error;
     }
@@ -48,7 +53,7 @@
 
   function photoButton(activity, i) {
     const photo = activity.photos[i];
-    return `<figure class="activity-photo"><button type="button" class="photo-trigger" data-gallery="${activity.boardId}" data-photo="${i}" aria-label="查看${escape(activity.title)}第${i + 1}张照片"><img src="${escape(photo.src)}" alt="${escape(photo.alt)}" width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async" style="object-position:${escape(photo.position || "center")};object-fit:${escape(photo.fit || "cover")}"><span class="photo-open" aria-hidden="true">＋</span></button></figure>`;
+    return `<figure class="activity-photo"><button type="button" class="photo-trigger" data-gallery="${activity.boardId}" data-photo="${i}" aria-label="查看${escape(activity.title)}第${i + 1}张照片"><img src="${escape(previewSource(photo.src))}" alt="${escape(photo.alt)}" width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async" style="object-position:${escape(photo.position || "center")};object-fit:${escape(photo.fit || "cover")}"><span class="photo-open" aria-hidden="true">＋</span></button></figure>`;
   }
   function detailContent(activity) {
     return [
@@ -63,7 +68,7 @@
     const cover = activity.photos[activity.coverIndex || 0];
     return `<details class="activity" id="activity-${activity.boardId}" name="activities-${activity.chapter}">
       <summary aria-controls="body-${activity.boardId}">
-        <span class="activity-cover">${cover ? `<img src="${escape(cover.src)}" alt="${escape(cover.alt)}" width="${cover.width}" height="${cover.height}" loading="lazy" decoding="async" style="object-position:${escape(cover.position || "center")};object-fit:${escape(cover.fit || "cover")}">` : ""}<span class="activity-number">${activity.boardId}</span></span>
+        <span class="activity-cover">${cover ? `<img src="${escape(previewSource(cover.src))}" alt="${escape(cover.alt)}" width="${cover.width}" height="${cover.height}" loading="lazy" decoding="async" decoding="async" style="object-position:${escape(cover.position || "center")};object-fit:${escape(cover.fit || "cover")}">` : ""}<span class="activity-number">${activity.boardId}</span></span>
         <span class="activity-card-heading"><span class="activity-title">${activity.title.split("，").map(p => `<span>${escape(p)}</span>`).join("")}</span><span class="activity-teaser"><span class="activity-date">${escape(activity.date)}</span><span class="card-toggle"><span class="when-closed">打开活动</span><span class="when-open">收起活动</span><i class="when-closed" aria-hidden="true">＋</i><i class="when-open" aria-hidden="true">−</i></span></span></span>
       </summary>
       <div class="activity-body" id="body-${activity.boardId}">
@@ -125,7 +130,14 @@
     if (!chapter) return;
     changingChapter = true;
     try {
-      if (activeChapter !== id) {
+      if (activeChapter !== id && lightweight.matches) {
+        setChapter(id);
+        if (boardId) document.getElementById(`activity-${boardId}`).open = true;
+        const destination = boardId ? document.getElementById(`activity-${boardId}`) : document.getElementById(id);
+        destination.scrollIntoView({ behavior: "instant", block: "start" });
+        // Fade the small heading, not the entire long chapter surface.
+        await animate(document.querySelector(`#${id} .chapter-heading`), [{ opacity: 0 }, { opacity: 1 }], 160);
+      } else if (activeChapter !== id) {
         clearAnimations(curtain);
         clearAnimations(curtain.querySelector(".curtain-line"));
         curtain.dataset.tone = id;

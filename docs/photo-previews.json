@@ -1,0 +1,361 @@
+{
+  "count": 59,
+  "originalBytes": 24969071,
+  "previewBytes": 4315858,
+  "files": [
+    {
+      "source": "1-1.jpg",
+      "preview": "1-1.webp",
+      "before": 222945,
+      "after": 51726
+    },
+    {
+      "source": "1-2.jpg",
+      "preview": "1-2.webp",
+      "before": 429492,
+      "after": 105556
+    },
+    {
+      "source": "1-3.jpg",
+      "preview": "1-3.webp",
+      "before": 287375,
+      "after": 70920
+    },
+    {
+      "source": "10-1.jpg",
+      "preview": "10-1.webp",
+      "before": 476162,
+      "after": 73322
+    },
+    {
+      "source": "10-2.jpg",
+      "preview": "10-2.webp",
+      "before": 475165,
+      "after": 67038
+    },
+    {
+      "source": "11-1.jpg",
+      "preview": "11-1.webp",
+      "before": 194370,
+      "after": 35650
+    },
+    {
+      "source": "11-2.jpg",
+      "preview": "11-2.webp",
+      "before": 296913,
+      "after": 73852
+    },
+    {
+      "source": "12-1.jpg",
+      "preview": "12-1.webp",
+      "before": 740167,
+      "after": 106274
+    },
+    {
+      "source": "12-2.jpg",
+      "preview": "12-2.webp",
+      "before": 772855,
+      "after": 135356
+    },
+    {
+      "source": "13-1.jpg",
+      "preview": "13-1.webp",
+      "before": 292993,
+      "after": 47112
+    },
+    {
+      "source": "13-2.jpg",
+      "preview": "13-2.webp",
+      "before": 246896,
+      "after": 70346
+    },
+    {
+      "source": "13-3.jpg",
+      "preview": "13-3.webp",
+      "before": 360500,
+      "after": 60002
+    },
+    {
+      "source": "14-1.jpg",
+      "preview": "14-1.webp",
+      "before": 195212,
+      "after": 43720
+    },
+    {
+      "source": "14-2.jpg",
+      "preview": "14-2.webp",
+      "before": 424582,
+      "after": 46716
+    },
+    {
+      "source": "15-1.jpg",
+      "preview": "15-1.webp",
+      "before": 176626,
+      "after": 23902
+    },
+    {
+      "source": "15-2.jpg",
+      "preview": "15-2.webp",
+      "before": 386627,
+      "after": 62742
+    },
+    {
+      "source": "16-1.jpg",
+      "preview": "16-1.webp",
+      "before": 383878,
+      "after": 36616
+    },
+    {
+      "source": "16-2.jpg",
+      "preview": "16-2.webp",
+      "before": 439644,
+      "after": 64370
+    },
+    {
+      "source": "17-1.jpg",
+      "preview": "17-1.webp",
+      "before": 200368,
+      "after": 40430
+    },
+    {
+      "source": "17-2.png",
+      "preview": "17-2.webp",
+      "before": 462676,
+      "after": 15762
+    },
+    {
+      "source": "18-1.jpg",
+      "preview": "18-1.webp",
+      "before": 312099,
+      "after": 42530
+    },
+    {
+      "source": "18-2.jpg",
+      "preview": "18-2.webp",
+      "before": 315187,
+      "after": 39416
+    },
+    {
+      "source": "19-1.jpg",
+      "preview": "19-1.webp",
+      "before": 328269,
+      "after": 87712
+    },
+    {
+      "source": "19-2.jpg",
+      "preview": "19-2.webp",
+      "before": 334306,
+      "after": 88068
+    },
+    {
+      "source": "2-1.jpg",
+      "preview": "2-1.webp",
+      "before": 445743,
+      "after": 55288
+    },
+    {
+      "source": "2-10.jpg",
+      "preview": "2-10.webp",
+      "before": 165432,
+      "after": 45606
+    },
+    {
+      "source": "2-11.jpg",
+      "preview": "2-11.webp",
+      "before": 278382,
+      "after": 76266
+    },
+    {
+      "source": "2-12.jpg",
+      "preview": "2-12.webp",
+      "before": 506247,
+      "after": 62778
+    },
+    {
+      "source": "2-2.jpg",
+      "preview": "2-2.webp",
+      "before": 293106,
+      "after": 39012
+    },
+    {
+      "source": "2-3.jpg",
+      "preview": "2-3.webp",
+      "before": 428287,
+      "after": 54530
+    },
+    {
+      "source": "2-4.jpg",
+      "preview": "2-4.webp",
+      "before": 525624,
+      "after": 69306
+    },
+    {
+      "source": "2-5.jpg",
+      "preview": "2-5.webp",
+      "before": 475242,
+      "after": 62134
+    },
+    {
+      "source": "2-6.jpg",
+      "preview": "2-6.webp",
+      "before": 341676,
+      "after": 81312
+    },
+    {
+      "source": "2-7.jpg",
+      "preview": "2-7.webp",
+      "before": 185361,
+      "after": 38358
+    },
+    {
+      "source": "2-8.jpg",
+      "preview": "2-8.webp",
+      "before": 186137,
+      "after": 39228
+    },
+    {
+      "source": "2-9.jpg",
+      "preview": "2-9.webp",
+      "before": 351766,
+      "after": 52342
+    },
+    {
+      "source": "20-1.jpg",
+      "preview": "20-1.webp",
+      "before": 418701,
+      "after": 108002
+    },
+    {
+      "source": "20-2.jpg",
+      "preview": "20-2.webp",
+      "before": 476281,
+      "after": 127348
+    },
+    {
+      "source": "21-1.jpg",
+      "preview": "21-1.webp",
+      "before": 477674,
+      "after": 127292
+    },
+    {
+      "source": "21-2.jpg",
+      "preview": "21-2.webp",
+      "before": 337121,
+      "after": 51078
+    },
+    {
+      "source": "22-1.jpg",
+      "preview": "22-1.webp",
+      "before": 429408,
+      "after": 118472
+    },
+    {
+      "source": "22-2.jpg",
+      "preview": "22-2.webp",
+      "before": 258549,
+      "after": 64504
+    },
+    {
+      "source": "22-3.jpg",
+      "preview": "22-3.webp",
+      "before": 491066,
+      "after": 110158
+    },
+    {
+      "source": "22-4.jpg",
+      "preview": "22-4.webp",
+      "before": 515795,
+      "after": 128822
+    },
+    {
+      "source": "23-1.jpg",
+      "preview": "23-1.webp",
+      "before": 263344,
+      "after": 40778
+    },
+    {
+      "source": "3-1.jpg",
+      "preview": "3-1.webp",
+      "before": 702895,
+      "after": 104444
+    },
+    {
+      "source": "3-2.png",
+      "preview": "3-2.webp",
+      "before": 1739374,
+      "after": 69580
+    },
+    {
+      "source": "4-1.jpg",
+      "preview": "4-1.webp",
+      "before": 388838,
+      "after": 97254
+    },
+    {
+      "source": "4-2.jpg",
+      "preview": "4-2.webp",
+      "before": 245230,
+      "after": 62188
+    },
+    {
+      "source": "5-1.jpg",
+      "preview": "5-1.webp",
+      "before": 559659,
+      "after": 79538
+    },
+    {
+      "source": "5-2.jpg",
+      "preview": "5-2.webp",
+      "before": 362319,
+      "after": 45854
+    },
+    {
+      "source": "6-1.jpg",
+      "preview": "6-1.webp",
+      "before": 287875,
+      "after": 68826
+    },
+    {
+      "source": "6-2.jpg",
+      "preview": "6-2.webp",
+      "before": 235949,
+      "after": 56362
+    },
+    {
+      "source": "7-1.jpg",
+      "preview": "7-1.webp",
+      "before": 753471,
+      "after": 110546
+    },
+    {
+      "source": "7-2.jpg",
+      "preview": "7-2.webp",
+      "before": 848890,
+      "after": 136148
+    },
+    {
+      "source": "8-1.jpg",
+      "preview": "8-1.webp",
+      "before": 648162,
+      "after": 97050
+    },
+    {
+      "source": "8-2.jpg",
+      "preview": "8-2.webp",
+      "before": 650523,
+      "after": 115166
+    },
+    {
+      "source": "9-1.jpg",
+      "preview": "9-1.webp",
+      "before": 514549,
+      "after": 119450
+    },
+    {
+      "source": "9-2.jpg",
+      "preview": "9-2.webp",
+      "before": 425088,
+      "after": 111700
+    }
+  ]
+}

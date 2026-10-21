@@ -3,6 +3,7 @@
   "use strict";
   const intro = document.querySelector(".intro");
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const lightweight = window.matchMedia("(max-width: 900px), (pointer: coarse)");
   const exitAnimations = new Set();
   let startFrame = 0;
   let generation = 0;
@@ -43,7 +44,7 @@
   });
   // A small fixed set of transform-only motes; no canvas or perpetual JS frame loop.
   const motes = intro.querySelector(".opening-motes");
-  const moteCount = window.matchMedia('(max-width: 660px)').matches ? 14 : 24;
+  const moteCount = lightweight.matches ? 0 : 24;
   for (let i = 0; i < moteCount; i++) {
     const mote = document.createElement("span");
     mote.className = "opening-mote";
@@ -79,8 +80,8 @@
     intro.classList.add("opening-leaving");
     intro.querySelector(".opening-skip").disabled = true;
     if (motion.matches) return;
-    if (quick) {
-      await move(intro, [{ opacity: 1 }, { opacity: 0 }], 150);
+    if (quick || lightweight.matches) {
+      await move(intro, [{ opacity: 1 }, { opacity: 0 }], quick ? 150 : 220);
       return;
     }
     const photos = intro.querySelectorAll(".opening-memory");

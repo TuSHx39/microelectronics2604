@@ -152,6 +152,41 @@ html { scrollbar-gutter: stable; }
   .intro .intro-enter { min-height: 42px; margin-top: 12px; padding-block: 5px; }
   .opening-memory { width: 130px; }
 }
+/* Keep all four memories in normal flow on phones, including short landscape
+   screens. Overflow scrolls vertically instead of cropping cards or the CTA. */
+@media (max-width: 900px) {
+  .intro { min-height: 0; overflow-y: auto; padding: max(76px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom)); gap: 16px; }
+  .intro[open] { display: flex; flex-direction: column; align-items: center; }
+  .intro .intro-content { order: 1; flex: 0 0 auto; position: relative; width: 100%; max-width: 520px; min-width: 0; margin-top: auto; padding: 0; }
+  .opening-seal { display: block; width: 56px; height: 56px; margin-bottom: 10px; }
+  .intro .intro-meta { display: block; font-size: 10px; }
+  .intro .intro-event { font-size: 9px; margin-top: 3px; }
+  .intro #intro-title { font-size: clamp(36px, 12vw, 65px); line-height: 1.2; margin: 14px 0; transform: none; }
+  .intro #intro-title > span + span { margin-left: 0; }
+  .opening-theme { display: block; font-size: 9px; letter-spacing: 0; }
+  .intro .intro-route { display: none; }
+  .intro .intro-enter { min-height: 49px; margin-top: 18px; }
+  .opening-memories { order: 2; flex: 0 0 auto; position: static; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; width: 100%; max-width: 520px; }
+  .opening-memory { position: static; width: auto; min-width: 0; padding: 4px 4px 0; border-radius: 12px; opacity: 1; transform: none; box-shadow: 0 4px 12px #163a610c; }
+  .opening-memory img { border-radius: 8px; }
+  .opening-memory figcaption { font-size: 18px; padding: 5px 0; }
+  .intro .intro-bottom { order: 3; flex: 0 0 auto; position: static; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: auto; font-size: 8px; }
+  .intro-bottom b { font-size: 14px; }
+  .opening-watermark { font-size: 45vw; }
+  .opening-circuit, .opening-motes, .opening-aura { display: none; }
+  .opening-ribbons { opacity: .18; }
+}
+@media (max-width: 900px), (pointer: coarse) {
+  /* Avoid per-glyph clipping, animated SVG strokes, perpetual rotation and
+     multiple full-screen compositor layers. Only two finite entrances remain. */
+  .intro[open].opening-run :is(.opening-scenery, .intro-content, .opening-memories) *,
+  .intro[open].opening-run *::after, .intro[open].opening-run .intro-bottom { animation: none !important; }
+  .intro[open].opening-run .intro-content { animation: mobile-fade .36s ease-out; }
+  .intro[open].opening-run .opening-memories { animation: mobile-fade .3s .1s ease-out both; }
+  .intro[open].opening-run .circuit-traces path { stroke-dashoffset: 0; }
+  .intro.opening-leaving :is(.opening-leaf, .opening-scenery, .intro-content, .opening-memory) { will-change: auto; }
+  .intro-enter::after { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   .intro[open].opening-run *, .intro[open].opening-run *::after { animation: none !important; }
   .opening-mote { display: none; }

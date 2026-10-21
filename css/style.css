@@ -24,7 +24,7 @@ p, h1, h2, h3, figure { margin: 0; }
 button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--sky); outline-offset: 5px; }
 button:disabled { cursor: wait; }
 .calligraphy { font-family: var(--hand); font-weight: 400; }
-.section-shell { width: min(100% - var(--gutter) * 2, var(--content)); margin-inline: auto; }
+.section-shell { width: calc(100% - var(--gutter) - var(--gutter)); max-width: var(--content); margin-inline: auto; }
 .page-shell { visibility: hidden; }
 .entered .page-shell { visibility: visible; }
 .skip-link { position: fixed; top: -80px; left: 20px; z-index: 50; background: white; padding: 12px 24px; border-radius: 30px; }
@@ -262,8 +262,9 @@ dialog { color: inherit; }
   .section-label { font-size: 10px; }
   .guide h2 { font-size: clamp(24px, 6.6vw, 31px); }
   .guide-heading > p { margin-top: 11px; font-size: 11px; }
-  .chapter-directory { grid-template-columns: 1fr 1fr; gap: 14px; padding-bottom: 12px; }
-  .directory-card { border-radius: 24px; }
+  .chapter-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding-bottom: 12px; perspective: none; }
+  .directory-card { min-width: 0; border-radius: 24px; overflow-wrap: anywhere; }
+  .directory-card:nth-child(n), .directory-card:hover { transform: none; }
   .directory-image { padding: 6px 6px 0; }
   .directory-image img { border-radius: 18px 18px 10px 10px; aspect-ratio: 4/3; }
   .directory-copy { padding: 14px; }
@@ -271,19 +272,21 @@ dialog { color: inherit; }
   .directory-copy > span:not(.directory-bottom) { font-size: 9px; }
   .directory-bottom { font-size: 9px; margin-top: 13px; }
   .round-arrow { width: 29px; height: 29px; font-size: 17px; }
-  .chapter-nav { top: 8px; padding: 5px; }
-  .chapter-nav button { padding: 9px 21px; font-size: 12px; }
+  .chapter-nav { top: 8px; padding: 5px; width: calc(100% - 32px); max-width: 400px; }
+  .chapter-nav > div { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .chapter-nav button { min-width: 0; padding: 9px 4px; min-height: 44px; font-size: 12px; }
   .chapter { margin-inline: 8px; border-radius: 30px; padding-top: 30px; }
   .chapter .section-shell { width: calc(100% - 28px); }
   .chapter-heading { display: block; padding: 0 7px; margin-bottom: 22px; }
   .chapter h2 { font-size: 50px; }
   .chapter-heading p { font-size: 10px; }
   .chapter-heading .chapter-intro { font-size: 11px; margin-top: 10px; max-width: 25em; }
-  .activities { grid-template-columns: 1fr; gap: 20px; }
+  .activities { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .chapter--resonance .activity:nth-child(even):not([open]) { transform: none; }
   .activity { border-radius: 25px; }
   .activity > summary { padding: 8px; }
   .activity-cover { border-radius: 19px; }
-  .activity-title { font-size: 21px; }
+  .activity-title { font-size: 21px; overflow-wrap: anywhere; }
   .activity-card-heading { padding: 16px 13px 10px; }
   .activity-teaser { margin-top: 13px; }
   .activity[open] > summary, .chapter--chips .activity:first-child:not([open]) > summary { display: block; }
@@ -330,6 +333,18 @@ dialog { color: inherit; }
   .lightbox-stage figure { padding-bottom: 56px; }
   .lightbox-bottom { font-size: 9px; padding: 16px 18px max(18px, env(safe-area-inset-bottom)); }
 }
+/* Touch layouts use short, finite fades and opaque surfaces while scrolling. */
+@media (max-width: 900px), (pointer: coarse) {
+  .chapter-nav { backdrop-filter: none; background: #fff; }
+  .activity-index::backdrop, .lightbox::backdrop { backdrop-filter: none; }
+  .entered .hero-copy > :not(.hero-badge), .entered .hero-visual { animation: none; }
+  .activity[open] .activity-body { animation: mobile-fade .16s ease-out; }
+  .photo-trigger img, .activity-cover > img { transition: none; }
+  .photo-trigger:hover img, .activity > summary:hover .activity-cover > img { transform: none; }
+  .directory-card, .closing-actions button, .pill-button { transition: background-color .15s, border-color .15s; }
+  .closing-actions button:hover, .pill-button:hover { transform: none; }
+}
+@keyframes mobile-fade { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
