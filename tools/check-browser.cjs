@@ -103,13 +103,14 @@ const { mkdirSync, writeFileSync } = require('node:fs');
     });
     assert.deepEqual(bad, []);
   });
-  await check('photos have no visible annotations and tall images remain complete', async () => {
+  await check('only confirmed annotations render and tall images remain complete', async () => {
     await page.setViewportSize({width:390,height:844});
     await page.locator('[data-open-index]').first().click();
     await page.locator('[data-activity="14"]').click();
     await page.locator('.chapter-curtain').waitFor({state:'hidden'});
     await page.locator('#activity-14 .photo-strip').scrollIntoViewIfNeeded();
-    assert.equal(await page.locator('figcaption').count(),0);
+    const expectedCaptions = await page.evaluate(() => window.ACTIVITIES.map(a => ({boardId:a.boardId,captions:(a.boardId === '02' ? a.photos : a.photos.slice(0,3)).map(p => window.PHOTO_EDITORIAL.photos[p.src.split('/').pop().replace(/\.[^.]+$/, '')]).filter(p => p?.status === 'confirmed' && p.caption).map(p => p.caption)})));
+    for (const activity of expectedCaptions) assert.deepEqual(await page.locator(`#activity-${activity.boardId} .activity-photo figcaption`).allTextContents(), activity.captions);
     assert.equal(await page.locator('#activity-14 .photo-strip img').first().evaluate(el=>getComputedStyle(el).objectFit),'contain');
     await page.screenshot({path:resolve(output,'photos-390.png')});
     await page.locator('#activity-14 [data-photo="0"]').first().click();

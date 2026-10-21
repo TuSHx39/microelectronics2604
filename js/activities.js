@@ -11,7 +11,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/1-1.jpg",
-        "alt": "延安站前，四位同学手持南洋书院院旗合影",
+        "alt": "延安站前，研学小组手持南洋书院院旗合影",
         "caption": "",
         "position": "center 60%",
         "width": 1440,
@@ -21,7 +21,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/1-2.jpg",
-        "alt": "宝塔前，同学们展开团日活动横幅合影",
+        "alt": "宝塔山前，研学小组展开团日活动横幅合影",
         "caption": "",
         "position": "center 60%",
         "width": 1440,
@@ -31,7 +31,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/1-3.jpg",
-        "alt": "红旗旁，参与研学的同学在户外合影",
+        "alt": "爬宝塔山时，研学同学的合影",
         "caption": "",
         "position": "center 60%",
         "width": 1440,
@@ -96,7 +96,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/2-1.jpg",
-        "alt": "跨校交流中留存的手写明信片",
+        "alt": "与上海交通大学往来的书信",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -106,7 +106,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/2-2.jpg",
-        "alt": "上海交通大学主题明信片与邮寄信封",
+        "alt": "与上海交通大学往来的书信",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -116,7 +116,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/2-3.jpg",
-        "alt": "校园拱门前，两位同学展示书法作品",
+        "alt": "西南交通大学校门前，同学展示书法作品",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -126,7 +126,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/2-4.jpg",
-        "alt": "校园拱门前展示的手写交流信件",
+        "alt": "西南交通大学校门前展示往来书信",
         "caption": "",
         "position": "center",
         "width": 1440,
@@ -136,7 +136,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/2-5.jpg",
-        "alt": "校园拱门前，两位同学手持明信片合影",
+        "alt": "西南交通大学校门前，同学手持书信合影",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -146,7 +146,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/2-6.jpg",
-        "alt": "北京交通大学校名标识前，同学展示交流信件",
+        "alt": "上海交通大学前展示书法作品",
         "caption": "",
         "position": "center",
         "width": 1707,
@@ -156,7 +156,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/2-7.jpg",
-        "alt": "传统门楼前展示的手写书信",
+        "alt": "上海交通大学校名前展示明信片",
         "caption": "",
         "position": "center",
         "width": 1707,
@@ -166,7 +166,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/2-8.jpg",
-        "alt": "传统门楼前展示的另一封交流信件",
+        "alt": "上海交通大学校名前展示明信片",
         "caption": "",
         "position": "center",
         "width": 1280,
@@ -176,7 +176,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/2-9.jpg",
-        "alt": "西安交通大学校名标识前展示的交流书信",
+        "alt": "西安交通大学校名标识前展示往来书信",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -186,7 +186,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/2-10.jpg",
-        "alt": "西南交通大学校名石前展示的手写信件",
+        "alt": "北京交通大学校碑前展示往来书信",
         "caption": "",
         "position": "center",
         "width": 1279,
@@ -196,7 +196,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/2-11.jpg",
-        "alt": "西南交通大学校名石前，两位同学展开书法作品",
+        "alt": "北京交通大学校碑前展示书法作品",
         "caption": "",
         "position": "center",
         "width": 1706,
@@ -206,7 +206,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/2-12.jpg",
-        "alt": "校庆主题标识前，同学们展开书法作品合影",
+        "alt": "西安交通大学校庆主题标识前，同学展开书法作品合影",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -253,8 +253,8 @@ window.ACTIVITIES = [
     },
     "story": {
       "aim": "以书信和笔墨连接四所交通大学，让同源校史成为青年之间可以交流的共同话题。",
-      "why": "四所交大各有发展历程，也共享饮水思源的传统。我们希望听见不同校园里同龄人的理解，把对西迁精神的学习延伸到一次有来有往的跨校对话中。",
-      "actions": "同学们与上海交通大学、北京交通大学、西南交通大学的伙伴联系，交换手写信件、校园明信片和书法作品。大家在信中谈校史、写下青年责任的思考，用各自校园中的留影回应彼此。",
+      "why": "四所交通大学各有发展历程，也共享饮水思源的传统。我们希望听见不同校园里同龄人的理解，把对西迁精神的学习延伸到一次有来有往的跨校对话中。",
+      "actions": "同学们与上海交通大学、北京交通大学、西南交通大学的伙伴联系，交换手写信件和校园明信片。同一份书法作品随邮寄周游四校，最终回到我们手中。大家在信中谈校史、写下青年责任的思考，用各自校园中的留影回应彼此。",
       "takeaway": "一封封来信让遥远的校园变得亲近。共同的校史在不同青年的表达中有了新的细节，也提醒我们珍惜求实学、务实业的传统，在各自的专业学习中继续努力。"
     }
   },
@@ -269,7 +269,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/3-1.jpg",
-        "alt": "西安事变纪念馆入口，同学们手持院旗合影",
+        "alt": "西安事变纪念馆入口，同学们手持班旗合影",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -341,7 +341,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/23-1.jpg",
-        "alt": "教室内，分享者围绕理想信念主题开展宣讲",
+        "alt": "分享者围绕理想信念主题开展宣讲",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -409,7 +409,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/4-1.jpg",
-        "alt": "电子信息科学研究院楼前，同学们手持院旗集体合影",
+        "alt": "电子信息科学研究院楼前，同学们手持班旗集体合影",
         "caption": "",
         "position": "center 60%",
         "width": 1440,
@@ -481,7 +481,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/16-1.jpg",
-        "alt": "蓝天下的交通大学西迁博物馆入口",
+        "alt": "交通大学西迁博物馆入口",
         "caption": "",
         "position": "center 60%",
         "width": 1920,
@@ -563,7 +563,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/6-1.jpg",
-        "alt": "校园建筑前，参与联合活动的同学集体合影",
+        "alt": "钱学森图书馆前，参与活动的同学们集体合影",
         "caption": "",
         "position": "center 60%",
         "width": 1440,
@@ -573,7 +573,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/6-2.jpg",
-        "alt": "展板前，同学们围在一起听取介绍",
+        "alt": "活动进行中",
         "caption": "",
         "position": "center 60%",
         "width": 1440,
@@ -634,7 +634,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/7-1.jpg",
-        "alt": "校园人物塑像前，两位同学合影留念",
+        "alt": "陈大燮塑像前，两位同学合影留念",
         "caption": "",
         "position": "center 40%",
         "width": 1440,
@@ -644,7 +644,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/7-2.jpg",
-        "alt": "绿树环绕的校园纪念雕塑与景观",
+        "alt": "饮水思源碑",
         "caption": "",
         "position": "center 40%",
         "width": 1440,
@@ -707,7 +707,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/8-1.jpg",
-        "alt": "户外体验区域，四位同学穿戴装备合影",
+        "alt": "真人CS项目体验同学合影",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -717,7 +717,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/8-2.jpg",
-        "alt": "树荫下，同学在指导中体验瞄准操作",
+        "alt": "同学在指导中体验瞄准操作",
         "caption": "",
         "position": "center",
         "width": 1440,
@@ -774,7 +774,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/9-1.jpg",
-        "alt": "操场上，同学们参与趣味充气球项目",
+        "alt": "同学们参与趣味充气球项目",
         "caption": "",
         "position": "center",
         "width": 1440,
@@ -843,7 +843,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/10-1.jpg",
-        "alt": "夜间操场上，同学们展开团日横幅与院旗合影",
+        "alt": "同学们展开团日横幅与班旗合影",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -853,7 +853,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/10-2.jpg",
-        "alt": "夜间操场上，同学们列队参与集体舞活动",
+        "alt": "同学们列队参与集体舞活动",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -912,7 +912,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/11-1.jpg",
-        "alt": "教室内，讲解者介绍舞龙舞狮与传统文化",
+        "alt": "讲解者介绍舞龙舞狮与传统文化",
         "caption": "",
         "position": "center",
         "width": 1440,
@@ -922,7 +922,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/11-2.jpg",
-        "alt": "室内训练场，同学们共同举起龙具体验舞龙",
+        "alt": "体操馆内，同学们共同举起龙具体验舞龙",
         "caption": "",
         "position": "center",
         "width": 1440,
@@ -980,7 +980,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/12-1.jpg",
-        "alt": "园林建筑前，身穿志愿马甲的同学携清扫工具合影",
+        "alt": "兴庆宫内，志愿同学携清扫工具合影",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -1049,7 +1049,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/13-1.jpg",
-        "alt": "上下对比拼图记录餐前与餐后的餐碗",
+        "alt": "光盘对比",
         "caption": "",
         "position": "center",
         "width": 720,
@@ -1059,7 +1059,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/13-2.jpg",
-        "alt": "餐桌上摆放的主食与菜品",
+        "alt": "光盘对比",
         "caption": "",
         "position": "center",
         "width": 1080,
@@ -1069,7 +1069,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/13-3.jpg",
-        "alt": "上下对比拼图记录面食餐前与餐后的餐盘",
+        "alt": "光盘对比",
         "caption": "",
         "position": "center",
         "width": 723,
@@ -1129,7 +1129,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/14-1.jpg",
-        "alt": "教室前方，分享者结合投影开展竞赛经验交流",
+        "alt": "分享会后手持班旗合影",
         "caption": "",
         "position": "center 60%",
         "width": 1440,
@@ -1139,7 +1139,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/14-2.jpg",
-        "alt": "黑板前，竞赛交流参与同学合影",
+        "alt": "竞赛交流参与同学合影",
         "caption": "",
         "position": "center 60%",
         "width": 1920,
@@ -1194,7 +1194,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/15-1.jpg",
-        "alt": "讲台前，分享者结合投影介绍人工智能与大模型",
+        "alt": "分享者介绍人工智能与大模型",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -1204,7 +1204,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/15-2.jpg",
-        "alt": "教室内，分享者与同学围绕电脑交流",
+        "alt": "分享者与同学面对面交流",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -1270,7 +1270,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/5-2.jpg",
-        "alt": "爱心雨伞旁，三位身穿蓝色志愿马甲的同学合影",
+        "alt": "爱心雨伞旁，三位志愿同学合影",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -1335,7 +1335,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/17-1.jpg",
-        "alt": "阅览室内，观影活动参与同学手持院旗合影",
+        "alt": "观影活动参与同学手持班旗合影",
         "caption": "",
         "position": "center",
         "width": 1584,
@@ -1345,7 +1345,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/17-2.png",
-        "alt": "投影银幕前，同学参与影片片段演绎",
+        "alt": "同学参与影片片段演绎",
         "caption": "",
         "position": "center",
         "width": 1256,
@@ -1403,7 +1403,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/18-1.jpg",
-        "alt": "阅览室内，同学围绕红色经典开展分享",
+        "alt": "同学围绕红色经典开展分享",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -1413,7 +1413,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/18-2.jpg",
-        "alt": "投影银幕前，同学参与经典片段交流与演绎",
+        "alt": "同学围绕经典作品开展分享",
         "caption": "",
         "position": "center",
         "width": 1920,
@@ -1474,7 +1474,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/19-1.jpg",
-        "alt": "校园楼旁，同学用清扫工具整理步道",
+        "alt": "志愿包干区内，同学用清扫工具整理步道",
         "caption": "",
         "position": "center",
         "width": 1080,
@@ -1484,7 +1484,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/19-2.jpg",
-        "alt": "楼前台阶旁，同学清扫地面与边角",
+        "alt": "志愿包干区内，同学清扫步道与绿化边角",
         "caption": "",
         "position": "center",
         "width": 1080,
@@ -1551,7 +1551,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/20-1.jpg",
-        "alt": "校园盲道上，同学使用簸箕与扫帚清理杂物",
+        "alt": "北门外盲道上，同学清理杂物",
         "caption": "",
         "position": "center",
         "width": 1080,
@@ -1561,7 +1561,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/20-2.jpg",
-        "alt": "盲道旁，同学整理占道的共享单车",
+        "alt": "北门外盲道上，同学整理占道的共享单车",
         "caption": "",
         "position": "center",
         "width": 1080,
@@ -1623,7 +1623,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/21-1.jpg",
-        "alt": "校园绿地旁，同学们手持院旗集体合影",
+        "alt": "同学们手持班旗集体合影",
         "caption": "",
         "position": "center",
         "width": 1440,
@@ -1689,7 +1689,7 @@ window.ACTIVITIES = [
     "photos": [
       {
         "src": "assets/photos/22-1.jpg",
-        "alt": "运动场上，同学们参与集体体育活动",
+        "alt": "操场上，同学们参与排球比赛",
         "caption": "",
         "position": "center",
         "width": 1440,
@@ -1699,7 +1699,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/22-2.jpg",
-        "alt": "操场上，两位同学手持球拍交流",
+        "alt": "同学们参与跳大绳比赛",
         "caption": "",
         "position": "center",
         "width": 1080,
@@ -1709,7 +1709,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/22-3.jpg",
-        "alt": "运动场上，同学抬手击打空中的球",
+        "alt": "跃起扣杀排球",
         "caption": "",
         "position": "center",
         "width": 1279,
@@ -1719,7 +1719,7 @@ window.ACTIVITIES = [
       },
       {
         "src": "assets/photos/22-4.jpg",
-        "alt": "树荫下，同学们分组挥拍活动",
+        "alt": "参与跳大绳比赛",
         "caption": "",
         "position": "center",
         "width": 1706,

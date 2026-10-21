@@ -48,7 +48,7 @@
     "status": "PASS"
   },
   {
-    "name": "photos have no visible annotations and tall images remain complete",
+    "name": "only confirmed annotations render and tall images remain complete",
     "status": "PASS"
   },
   {

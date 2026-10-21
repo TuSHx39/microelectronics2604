@@ -8,12 +8,19 @@
   ];
   const activities = window.ACTIVITIES;
   const byBoardId = new Map(activities.map(activity => [activity.boardId, activity]));
+  const allPhotoEntries = activities.flatMap(activity => activity.photos.map(photo => ({ activity, photo })));
   const escape = value => String(value ?? "").replace(/[&<>"']/g, char => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   })[char]);
   const displayText = value => String(value ?? "").replace(/“最佳团日”/g, "最佳团日");
   // Browsing uses 800px previews; the lightbox keeps activity.photos originals.
   const previewSource = src => src.replace(/^assets\/photos\/(.+)\.[^.]+$/, "assets/previews/$1.webp");
+  const editorial = window.PHOTO_EDITORIAL || { schools: [], photos: {} };
+  const approvedPhoto = photo => {
+    const id = photo.src.split("/").pop().replace(/\.[^.]+$/, "");
+    const record = editorial.photos[id];
+    return record?.status === "confirmed" ? record : null;
+  };
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const lightweight = window.matchMedia("(max-width: 900px), (pointer: coarse)");
   const page = document.querySelector(".page-shell");
@@ -53,7 +60,14 @@
 
   function photoButton(activity, i) {
     const photo = activity.photos[i];
-    return `<figure class="activity-photo"><button type="button" class="photo-trigger" data-gallery="${activity.boardId}" data-photo="${i}" aria-label="查看${escape(activity.title)}第${i + 1}张照片"><img src="${escape(previewSource(photo.src))}" alt="${escape(photo.alt)}" width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async" style="object-position:${escape(photo.position || "center")};object-fit:${escape(photo.fit || "cover")}"><span class="photo-open" aria-hidden="true">＋</span></button></figure>`;
+    const record = approvedPhoto(photo);
+    return `<figure class="activity-photo" data-school="${escape(record?.schoolId || "")}"><button type="button" class="photo-trigger" data-gallery="${activity.boardId}" data-photo="${i}" aria-label="查看${escape(activity.title)}第${i + 1}张照片"><img src="${escape(previewSource(photo.src))}" alt="${escape(record?.caption || photo.alt)}" width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async" style="object-position:${escape(photo.position || "center")};object-fit:${escape(photo.fit || "cover")}"><span class="photo-open" aria-hidden="true">＋</span></button>${record?.caption ? `<figcaption>${escape(record.caption)}</figcaption>` : ""}</figure>`;
+  }
+  function schoolGallery(activity) {
+    return `<section class="school-gallery" aria-label="四校往来影像"><header><h4>四校往来影像</h4><p>同一份书法作品，随书信邮寄周游四校，最终回到我们手中。点击校徽，看看各校留下的影像。</p></header><div class="school-filters" role="group" aria-label="按学校查看照片"><button type="button" class="school-filter school-filter-all" data-school-filter="all" aria-pressed="true"><span>全部影像</span><small>${activity.photos.length} 张</small></button>${editorial.schools.map(school => {
+      const count = activity.photos.filter(photo => approvedPhoto(photo)?.schoolId === school.id).length;
+      return `<button type="button" class="school-filter" data-school-filter="${escape(school.id)}" aria-pressed="false"${count ? "" : " disabled"}><img src="${escape(school.logo)}" alt="" width="64" height="64"><span>${escape(school.name)}</span><small>${count} 张</small></button>`;
+    }).join("")}</div><div class="school-photo-grid">${activity.photos.map((_, i) => photoButton(activity, i)).join("")}</div></section>`;
   }
   function detailContent(activity) {
     return [
@@ -75,7 +89,7 @@
         <dl class="activity-meta"><div><dt>时间</dt><dd>${escape(activity.date)}</dd></div><div><dt>地点</dt><dd>${escape(activity.location)}</dd></div></dl>
         <p class="activity-summary">${escape(activity.summary)}</p>
         <div class="detail-body">${detailContent(activity)}</div>
-        ${activity.photos.length ? `<div class="photo-strip">${activity.photos.slice(0, 3).map((_, i) => photoButton(activity, i)).join("")}</div><div class="activity-actions"><button type="button" class="gallery-link" data-gallery="${activity.boardId}" data-photo="0">查看全部 ${activity.photos.length} 张照片 <span aria-hidden="true">↗</span></button></div>` : ""}
+        ${activity.boardId === "02" ? schoolGallery(activity) : activity.photos.length ? `<div class="photo-strip">${activity.photos.slice(0, 3).map((_, i) => photoButton(activity, i)).join("")}</div><div class="activity-actions"><button type="button" class="gallery-link" data-gallery="${activity.boardId}" data-photo="0">查看全部 ${activity.photos.length} 张照片 <span aria-hidden="true">↗</span></button></div>` : ""}
       </div>
     </details>`;
   }
@@ -214,36 +228,54 @@
   intro.querySelector(".intro-enter").addEventListener("click", () => enterExhibition());
   intro.querySelector(".opening-skip").addEventListener("click", () => enterExhibition(true));
 
-  let galleryActivity = null;
+  let galleryEntries = [];
   let photoIndex = 0;
   let galleryOpener = null;
   let indexOpener = null;
   const image = lightbox.querySelector(".lightbox-image");
   const imageMessage = lightbox.querySelector(".lightbox-message");
+  const photoActivityLink = lightbox.querySelector(".lightbox-activity-link");
   function showPhoto(index) {
-    photoIndex = (index + galleryActivity.photos.length) % galleryActivity.photos.length;
-    const photo = galleryActivity.photos[photoIndex];
+    photoIndex = (index + galleryEntries.length) % galleryEntries.length;
+    const { activity, photo } = galleryEntries[photoIndex];
     image.hidden = false;
     image.src = photo.src;
-    image.alt = photo.alt;
-    lightbox.querySelector("h2").textContent = `${galleryActivity.boardId} / ${galleryActivity.title}`;
+    image.alt = approvedPhoto(photo)?.caption || photo.alt;
+    lightbox.querySelector(".lightbox-caption").textContent = approvedPhoto(photo)?.caption || "";
+    lightbox.querySelector("h2").textContent = `${activity.boardId} / ${activity.title}`;
+    photoActivityLink.href = `#activity-${activity.boardId}`;
+    photoActivityLink.dataset.photoActivity = activity.boardId;
+    photoActivityLink.setAttribute("aria-label", `查看对应活动：${activity.title}`);
     imageMessage.textContent = "";
-    lightbox.querySelector(".lightbox-counter").textContent = `${photoIndex + 1} / ${galleryActivity.photos.length}`;
-    lightbox.querySelector(".lightbox-prev").hidden = galleryActivity.photos.length < 2;
-    lightbox.querySelector(".lightbox-next").hidden = galleryActivity.photos.length < 2;
+    lightbox.querySelector(".lightbox-counter").textContent = `${photoIndex + 1} / ${galleryEntries.length}`;
+    lightbox.querySelector(".lightbox-prev").hidden = galleryEntries.length < 2;
+    lightbox.querySelector(".lightbox-next").hidden = galleryEntries.length < 2;
   }
-  function openGallery(activity, index, opener) {
-    if (!activity?.photos.length) return;
-    galleryActivity = activity;
+  function startGallery(entries, index, opener, random = false) {
+    if (!entries.length) return;
+    galleryEntries = entries;
     galleryOpener = opener;
+    photoActivityLink.hidden = !random;
     showPhoto(index);
     openDialog(lightbox);
     lightbox.querySelector(".lightbox-close").focus();
   }
+  function openGallery(activity, index, opener, schoolId = "all") {
+    if (!activity?.photos.length) return;
+    const entries = allPhotoEntries.filter(entry => entry.activity === activity && (schoolId === "all" || approvedPhoto(entry.photo)?.schoolId === schoolId));
+    startGallery(entries, Math.max(0, entries.findIndex(entry => entry.photo === activity.photos[index])), opener);
+  }
   document.addEventListener("click", async event => {
     const target = event.target.closest("button, a");
     if (!target) return;
-    if (target.dataset.chapter) {
+    if (target.hasAttribute("data-school-filter")) {
+      const gallery = target.closest(".school-gallery"), schoolId = target.dataset.schoolFilter;
+      gallery.querySelectorAll(".school-filter").forEach(button => button.setAttribute("aria-pressed", String(button === target)));
+      gallery.querySelectorAll(".activity-photo").forEach(figure => {
+        figure.hidden = schoolId !== "all" && figure.dataset.school !== schoolId;
+        figure.querySelector("button").dataset.gallerySchool = schoolId;
+      });
+    } else if (target.dataset.chapter) {
       await selectChapter(target.dataset.chapter);
     } else if (target.hasAttribute("data-close-chapter")) {
       const previous = activeChapter;
@@ -254,18 +286,23 @@
     } else if (target.hasAttribute("data-open-index")) {
       indexOpener = target;
       openDialog(indexDialog);
+    } else if (target.dataset.photoActivity) {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      const activity = byBoardId.get(target.dataset.photoActivity);
+      galleryOpener = null;
+      lightbox.close();
+      await selectChapter(activity.chapter, activity.boardId);
     } else if (target.dataset.activity) {
       const activity = byBoardId.get(target.dataset.activity);
       indexDialog.close();
       await selectChapter(activity.chapter, activity.boardId);
     } else if (target.hasAttribute("data-random-photo")) {
-      const choices = activities.filter(activity => activity.photos.length);
-      const activity = choices[Math.floor(Math.random() * choices.length)];
-      openGallery(activity, Math.floor(Math.random() * activity.photos.length), target);
+      startGallery(allPhotoEntries, Math.floor(Math.random() * allPhotoEntries.length), target, true);
     } else if (target.hasAttribute("data-replay")) {
       replayIntro();
     } else if (target.dataset.gallery) {
-      openGallery(byBoardId.get(target.dataset.gallery), Number(target.dataset.photo || 0), target);
+      openGallery(byBoardId.get(target.dataset.gallery), Number(target.dataset.photo || 0), target, target.dataset.gallerySchool || "all");
     }
   });
   indexDialog.querySelector(".index-close").addEventListener("click", () => {
@@ -287,17 +324,25 @@
     imageMessage.textContent = "这张照片暂不可用，请切换查看其他照片。";
   });
   let touchStart = null;
-  image.addEventListener("touchstart", event => {
-    touchStart = event.touches.length === 1 ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null;
+  const swipeArea = lightbox.querySelector(".lightbox-stage");
+  swipeArea.addEventListener("touchstart", event => {
+    touchStart = event.touches.length === 1 && !event.target.closest("button, a") ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null;
   }, { passive: true });
-  image.addEventListener("touchend", event => {
-    if (!touchStart) return;
+  swipeArea.addEventListener("touchmove", event => {
+    if (event.touches.length !== 1) touchStart = null;
+  }, { passive: true });
+  swipeArea.addEventListener("touchend", event => {
+    if (!touchStart || event.touches?.length || event.changedTouches.length !== 1) {
+      touchStart = null;
+      return;
+    }
     const dx = event.changedTouches[0].clientX - touchStart.x;
     const dy = event.changedTouches[0].clientY - touchStart.y;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) showPhoto(photoIndex + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) >= 45 && Math.abs(dx) > Math.abs(dy) * 1.3) showPhoto(photoIndex + (dx < 0 ? 1 : -1));
     touchStart = null;
   }, { passive: true });
-  image.addEventListener("touchcancel", () => { touchStart = null; }, { passive: true });
+  swipeArea.addEventListener("touchcancel", () => { touchStart = null; }, { passive: true });
+  lightbox.addEventListener("close", () => { touchStart = null; }, { passive: true });
   function hideFailedImage(img) {
     img.hidden = true;
     img.closest(".photo-trigger, .activity-cover, .directory-image")?.classList.add("image-unavailable");

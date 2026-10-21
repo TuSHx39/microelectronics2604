@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图片注释逐张确认 · 微电子2604</title>
+  <link rel="stylesheet" href="review.css">
+  <script src="../../js/photo-editorial.js" defer></script><script src="review.js" defer></script>
+</head>
+<body>
+  <header><p>微电子2604班 · 图片整理</p><h1>图片注释逐张确认</h1><p>点击图片放大，核对或修改注释，再勾选确认。四校照片的学校由你逐张指定；未勾选的内容不会成为定稿。</p></header>
+  <nav class="schools" aria-label="四校校徽"></nav>
+  <div class="toolbar"><label>查看活动 <select id="activity-filter"></select></label><p id="progress" aria-live="polite"></p><button type="button" id="export">下载已确认注释</button></div>
+  <p class="notice" id="message" role="status">修改会保存在当前浏览器。完成后下载确认文件，或直接在聊天中回复照片编号、学校和修改后的文字。</p>
+  <main id="photos"></main>
+  <dialog id="zoom"><button type="button" id="close-zoom" aria-label="关闭大图">×</button><img alt=""><p></p></dialog>
+</body>
+</html>

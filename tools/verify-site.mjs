@@ -32,7 +32,8 @@ for (const activity of activities) {
   for (const photo of activity.photos) {
     assert.ok(existsSync(resolve(root, photo.src)), `Missing photo: ${photo.src}`);
     assert.ok(photo.alt, `Missing accessible image description: ${photo.src}`);
-    assert.equal(photo.caption, '', 'Photo annotations must remain empty');
+    if (!/\/1-1\.[^.]+$/.test(photo.src)) assert.ok(!photo.alt.includes('院旗'), 'Only the Yan’an station photo has the academy flag');
+    assert.equal(photo.caption, '', 'Caption approvals live in the separate editorial manifest');
     assert.ok(photo.width > 0 && photo.height > 0 && Math.max(photo.width, photo.height) <= 1920);
   }
 }
@@ -44,4 +45,18 @@ for (const path of [...html.matchAll(/(?:src|href)="((?:assets|js|css)\/[^"#]+)"
 for (const [, path] of css.matchAll(/url\("([^\"]+)"\)/g)) {
   assert.ok(existsSync(resolve(root, 'css', path)), `Missing CSS resource: ${path}`);
 }
-console.log('PASS: 23 activity stories, 59 accessible images without annotations, ID/date/goal boundaries, all local resources.');
+const editorial = JSON.parse(readFileSync(resolve(root, 'content/photo-editorial.json'), 'utf8'));
+vm.runInNewContext(readFileSync(resolve(root, 'js/photo-editorial.js'), 'utf8'), context);
+assert.equal(JSON.stringify(context.window.PHOTO_EDITORIAL), JSON.stringify(editorial), 'Browser captions must match canonical approvals');
+assert.equal(Object.keys(editorial.photos).length, 59);
+for (const photo of Object.values(editorial.photos)) {
+  assert.ok(existsSync(resolve(root, photo.src)));
+  assert.ok(['pending', 'confirmed'].includes(photo.status));
+  if (photo.id !== '1-1') assert.ok(!`${photo.caption}${photo.proposedCaption}`.includes('院旗'));
+  if (photo.status === 'confirmed') {
+    assert.ok(photo.caption.trim());
+    if (photo.boardId === '02') assert.ok(editorial.schools.some(s => s.id === photo.schoolId));
+  }
+}
+for (const school of editorial.schools) assert.ok(existsSync(resolve(root, school.logo)));
+console.log('PASS: 23 activity stories, 59 accessible images, separate reviewed captions, four local school emblems, ID/date/goal boundaries, all local resources.');
